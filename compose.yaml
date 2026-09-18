@@ -1,0 +1,37 @@
+services:
+  localcode:
+    build:
+      context: .
+    image: localcode:latest
+    restart: unless-stopped
+    init: true
+    ports:
+      - "${LOCALCODE_PORT:-8787}:8787"
+    environment:
+      PORT: "8787"
+      LOCALCODE_DB_PATH: /data/localcode.db
+      LOCALCODE_STUDY_DIR: /problem-data
+      JDTLS_HOME: /opt/localcode/jdtls
+      JDTLS_JAVA: /opt/java/bin/java
+      LOCALCODE_JAVA_HOME: /opt/java
+    volumes:
+      - localcode-data:/data
+      - localcode-cache:/app/.localcode
+      - type: bind
+        source: ${PROBLEM_DATA_DIR:-./data/demo}
+        target: /problem-data
+        read_only: true
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 256
+    mem_limit: ${LOCALCODE_MEMORY_LIMIT:-2g}
+    cpus: ${LOCALCODE_CPU_LIMIT:-2}
+
+volumes:
+  localcode-data:
+  localcode-cache:

@@ -1,0 +1,59 @@
+{
+  "questions": [
+    {
+      "id": "1",
+      "title": "数组配对",
+      "slug": "array-pair",
+      "difficulty": "Easy",
+      "date": "Demo",
+      "pattern": "哈希",
+      "core16": true,
+      "local_file": "problems/0001-array-pair.md",
+      "source_type": "localcode_demo"
+    },
+    {
+      "id": "206",
+      "title": "反转单链表",
+      "slug": "reverse-list",
+      "difficulty": "Easy",
+      "date": "Demo",
+      "pattern": "链表",
+      "core16": true,
+      "local_file": "problems/0206-reverse-list.md",
+      "source_type": "localcode_demo"
+    },
+    {
+      "id": "704",
+      "title": "有序数组查找",
+      "slug": "ordered-search",
+      "difficulty": "Easy",
+      "date": "Demo",
+      "pattern": "二分",
+      "core16": true,
+      "local_file": "problems/0704-ordered-search.md",
+      "source_type": "localcode_demo"
+    },
+    {
+      "id": "3",
+      "title": "最长无重复窗口",
+      "slug": "distinct-window",
+      "difficulty": "Medium",
+      "date": "Demo",
+      "pattern": "滑动窗口",
+      "core16": true,
+      "local_file": "problems/0003-distinct-window.md",
+      "source_type": "localcode_demo"
+    },
+    {
+      "id": "20",
+      "title": "括号序列校验",
+      "slug": "bracket-validation",
+      "difficulty": "Easy",
+      "date": "Demo",
+      "pattern": "栈",
+      "core16": true,
+      "local_file": "problems/0020-bracket-validation.md",
+      "source_type": "localcode_demo"
+    }
+  ]
+}

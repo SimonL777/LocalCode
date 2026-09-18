@@ -1,0 +1,36 @@
+{
+  "name": "localcode",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"node --watch server/index.mjs\" \"vite --host 0.0.0.0\"",
+    "build": "vite build",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:stop": "./scripts/stop.sh",
+    "local:start": "./scripts/local-start.sh",
+    "setup:intelligence": "node scripts/setup-jdtls.mjs",
+    "start": "node server/index.mjs",
+    "test": "node --test server/*.test.mjs"
+  },
+  "dependencies": {
+    "@monaco-editor/react": "^4.7.0",
+    "express": "^5.2.1",
+    "lucide-react": "^0.544.0",
+    "monaco-editor": "^0.52.2",
+    "pyright": "^1.1.414",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "vscode-jsonrpc": "^9.0.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "vite": "^8.0.0"
+  }
+}
