@@ -122,15 +122,4 @@ export const javascriptStarters = {
   '739': `class Solution {\n  dailyTemperatures(temperatures) {\n    \n  }\n}`
 };
 
-export const references = {
-  '1': {
-    hints: [
-      '遍历到 nums[i] 时，只需要知道 target - nums[i] 是否在前面出现过。',
-      '哈希表保存“数值 -> 下标”。先查补数，再写入当前值，可避免重复使用同一元素。'
-    ],
-    complexity: '时间 O(n)，空间 O(n)。',
-    java: `import java.util.HashMap;\nimport java.util.Map;\n\nclass Solution {\n    public int[] twoSum(int[] nums, int target) {\n        Map<Integer, Integer> indices = new HashMap<>();\n        for (int i = 0; i < nums.length; i++) {\n            int complement = target - nums[i];\n            if (indices.containsKey(complement)) {\n                return new int[]{indices.get(complement), i};\n            }\n            indices.put(nums[i], i);\n        }\n        throw new IllegalStateException("No solution");\n    }\n}`,
-    javascript: `class Solution {\n  twoSum(nums, target) {\n    const indices = new Map();\n    for (let i = 0; i < nums.length; i++) {\n      const complement = target - nums[i];\n      if (indices.has(complement)) {\n        return [indices.get(complement), i];\n      }\n      indices.set(nums[i], i);\n    }\n    throw new Error('No solution');\n  }\n}`,
-    python: `class Solution:\n    def twoSum(self, nums: list[int], target: int) -> list[int]:\n        indices = {}\n        for i, value in enumerate(nums):\n            complement = target - value\n            if complement in indices:\n                return [indices[complement], i]\n            indices[value] = i\n        raise RuntimeError("No solution")`
-  }
-};
+export { references } from './references.mjs';
