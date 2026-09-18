@@ -1,5 +1,7 @@
 # LocalCode
 
+[![CI](https://github.com/SimonL777/LocalCode/actions/workflows/ci.yml/badge.svg)](https://github.com/SimonL777/LocalCode/actions/workflows/ci.yml)
+
 LocalCode is a self-hosted algorithm practice workbench with local execution, SQLite persistence, and IDE-grade language intelligence for Java, JavaScript, and Python.
 
 It ships with an original five-problem demo catalog. Personal or licensed problem catalogs can be mounted at runtime and stay outside the repository.
