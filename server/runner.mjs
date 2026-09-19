@@ -4,7 +4,8 @@ import os from 'node:os';
 import path from 'node:path';
 import { runnableSpecs } from './catalog.mjs';
 
-const TIMEOUT_MS = 5000;
+const EXECUTION_TIMEOUT_MS = 5000;
+const COMPILATION_TIMEOUT_MS = 15000;
 
 function runProcess(command, args, options = {}) {
   return new Promise((resolve) => {
@@ -19,7 +20,7 @@ function runProcess(command, args, options = {}) {
     const timer = setTimeout(() => {
       timedOut = true;
       child.kill('SIGKILL');
-    }, TIMEOUT_MS);
+    }, options.timeoutMs ?? EXECUTION_TIMEOUT_MS);
 
     child.stdout.on('data', (chunk) => { stdout += chunk.toString(); });
     child.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
@@ -531,7 +532,10 @@ export async function runSubmission({ problemId, language, code, mode = 'debug' 
       execution = await runProcess(process.env.PYTHON_BIN ?? 'python3', ['main.py'], { cwd: workDir });
     } else {
       await fs.writeFile(path.join(workDir, 'Main.java'), buildJava(code, executionSpec));
-      const compilation = await runProcess(process.env.JAVAC_BIN ?? 'javac', ['-encoding', 'UTF-8', 'Main.java'], { cwd: workDir });
+      const compilation = await runProcess(process.env.JAVAC_BIN ?? 'javac', ['-encoding', 'UTF-8', 'Main.java'], {
+        cwd: workDir,
+        timeoutMs: COMPILATION_TIMEOUT_MS
+      });
       if (compilation.code !== 0 || compilation.timedOut) {
         return {
           ok: false,

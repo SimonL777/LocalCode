@@ -121,23 +121,19 @@ test('all Java references compile', async () => {
 });
 
 test('runnable reference answers pass every submission test', async () => {
-  const checks = [];
   for (const problemId of Object.keys(runnableSpecs)) {
     for (const language of ['java', 'javascript', 'python']) {
-      checks.push((async () => {
-        const result = await runSubmission({
-          problemId,
-          language,
-          code: references[problemId][language],
-          mode: 'submit'
-        });
-        assert.equal(
-          result.ok,
-          true,
-          `problem ${problemId} ${language} failed: ${result.message ?? JSON.stringify(result.tests)}`
-        );
-      })());
+      const result = await runSubmission({
+        problemId,
+        language,
+        code: references[problemId][language],
+        mode: 'submit'
+      });
+      assert.equal(
+        result.ok,
+        true,
+        `problem ${problemId} ${language} failed: ${result.message ?? JSON.stringify(result.tests)}`
+      );
     }
   }
-  await Promise.all(checks);
 });
