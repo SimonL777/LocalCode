@@ -102,7 +102,7 @@ The runner uses local Java, Node.js, and Python processes with timeouts. The Com
 - Java, JavaScript, and Python editing with autosave
 - Semantic completion, imports, signatures, hover documentation, and diagnostics
 - Debug suites with a few visible cases and submission suites with hidden boundary cases
-- Runnable adapters for demo problem IDs `1`, `3`, `20`, `206`, and `704`
+- Runnable adapters for all 24 curated practice problems, including arrays, strings, linked lists, trees, graphs, dynamic programming, and class-operation problems such as LRU Cache
 - SQLite-backed solutions, progress, timing, and attempt history
 - Optional hints and reference implementations when supplied by the local catalog
 

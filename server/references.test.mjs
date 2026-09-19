@@ -63,7 +63,9 @@ function standaloneJava(code) {
 test('every practice problem has a complete reference answer', () => {
   const problemIds = Object.keys(javascriptStarters).sort((a, b) => Number(a) - Number(b));
   const referenceIds = Object.keys(references).sort((a, b) => Number(a) - Number(b));
+  const runnableIds = Object.keys(runnableSpecs).sort((a, b) => Number(a) - Number(b));
   assert.deepEqual(referenceIds, problemIds);
+  assert.deepEqual(runnableIds, problemIds);
 
   for (const problemId of problemIds) {
     const reference = references[problemId];
